@@ -1,0 +1,31 @@
+{
+  "name": "postonly-browser-http-client",
+  "version": "1.0.0",
+  "description": "A POSTonly HTTP client for the browser",
+  "main": "lib/PostOnlyHttpClient.js",
+  "types": "lib/PostOnlyHttpClient.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ts-node": "^8.4.1",
+    "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "test": "mocha -r ts-node/register test/**/*.spec.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c0deritter/postonly-browser-http-client.git"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "Coderitter GmbH",
+  "bugs": {
+    "url": "https://github.com/c0deritter/postonly-browser-http-client/issues"
+  },
+  "homepage": "https://github.com/c0deritter/postonly-browser-http-client#readme"
+}
