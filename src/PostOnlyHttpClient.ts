@@ -1,20 +1,20 @@
-export interface Message {
-  id: string
-  data: any
-}
+import { RemoteMethodCall, Result } from 'coderitter-api'
+import { fromJsonObj, Instantiator, toJsonObj } from 'mega-nice-json'
 
 export default class PostOnlyHttpClient {
 
   apiUrl: string
+  instantiator: Instantiator
 
-  constructor(apiUrl: string) {
+  constructor(apiUrl: string, instantiator: Instantiator) {
     this.apiUrl = apiUrl
+    this.instantiator = instantiator
   }
 
-  async request(id: string, data?: object): Promise<Message> {
+  async request<T>(id: string, data?: object): Promise<Result<T>> {
     let request = new XMLHttpRequest()
 
-    return new Promise<Message>((resolve, reject) => {
+    return new Promise<Result<T>>((resolve, reject) => {
       // onreadystatechange yields higher browser support and is the same as onload
       // with readyState == 4
       request.onreadystatechange = () => {
@@ -23,25 +23,18 @@ export default class PostOnlyHttpClient {
         if (request.readyState !== 4) return
 
         if (request.status == 200 && request.status < 300) {
-          let json = request.response
-          let obj: Message
+          let resultJson = request.response
+          let resultObj = undefined
 
           try {
-            obj = JSON.parse(json)
+            resultObj = JSON.parse(resultJson)
           }
           catch (e) {
-            reject('Could not parse JSON: ' + json)
+            reject('Could not parse JSON: ' + resultJson)
           }
 
-          if (message == undefined) {
-            throw new Error('Invalid message. Message was undefined.')
-          }
-
-          if (typeof message.id !== 'string') {
-            throw new Error('Invalid message. Message id is not of type \`string\'.')
-          }
-        
-          resolve(message)
+          let result = fromJsonObj(resultObj, this.instantiator)
+          resolve(result)
         }
         else {
           reject({
@@ -51,12 +44,9 @@ export default class PostOnlyHttpClient {
         }
       }
 
-      let message: Message = {
-        id: id,
-        data: data
-      }
-
-      let json = JSON.stringify(message)
+      let remoteMethodCall = new RemoteMethodCall(id, data)
+      let remoteMethodCallObj = toJsonObj(remoteMethodCall)
+      let json = JSON.stringify(remoteMethodCallObj)
       request.open('POST', this.apiUrl, true)
       request.send(json)
     })
