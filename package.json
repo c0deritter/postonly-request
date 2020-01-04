@@ -1,6 +1,6 @@
 {
   "name": "postonly-browser-http-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A POSTonly HTTP client for the browser",
   "main": "lib/PostOnlyHttpClient.js",
   "types": "lib/PostOnlyHttpClient.d.ts",
