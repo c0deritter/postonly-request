@@ -8,7 +8,7 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "coderitter-api": "^0.16.0",
+    "coderitter-api": "^0.17.0",
     "mega-nice-json": "^2.1.1"
   },
   "devDependencies": {
