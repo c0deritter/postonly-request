@@ -44,7 +44,7 @@ export default class PostOnlyHttpClient {
         }
       }
 
-      let remoteMethodCall = new RemoteMethodCall(methodName, parameter)
+      let remoteMethodCall: RemoteMethodCall = { methodName: methodName, parameter: parameter }
       let remoteMethodCallObj = toJsonObj(remoteMethodCall)
       let json = JSON.stringify(remoteMethodCallObj)
       request.open('POST', this.apiUrl, true)
