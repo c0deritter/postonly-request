@@ -1,6 +1,6 @@
 {
   "name": "coderitter-api-postonly-browser-http-client",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "The Coderitter Api POSTonly HTTP client for browsers",
   "main": "lib/PostOnlyHttpClient.js",
   "types": "lib/PostOnlyHttpClient.d.ts",
@@ -8,7 +8,7 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "coderitter-api": "^0.21.6",
+    "coderitter-api": "^0.22.1",
     "mega-nice-json": "^2.1.2"
   },
   "devDependencies": {
