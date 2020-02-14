@@ -11,7 +11,7 @@ export default class PostOnlyHttpClient {
     this.instantiator = instantiator
   }
 
-  async request<T>(methodName: string, parameter?: object): Promise<Result<T>> {
+  async request<T>(remoteMethodCall: RemoteMethodCall|any): Promise<Result<T>> {
     let request = new XMLHttpRequest()
 
     return new Promise<Result<T>>((resolve, reject) => {
@@ -24,13 +24,12 @@ export default class PostOnlyHttpClient {
 
         if (request.status == 200 && request.status < 300) {
           let resultJson = request.response
-          let resultObj = undefined
 
           try {
-            resultObj = JSON.parse(resultJson)
+            var resultObj = JSON.parse(resultJson)
           }
           catch (e) {
-            reject('Could not parse JSON: ' + resultJson)
+            reject(e)
           }
 
           let result = fromJsonObj(resultObj, this.instantiator)
@@ -44,7 +43,6 @@ export default class PostOnlyHttpClient {
         }
       }
 
-      let remoteMethodCall: RemoteMethodCall = { methodName: methodName, parameter: parameter }
       let remoteMethodCallObj = toJsonObj(remoteMethodCall)
       let json = JSON.stringify(remoteMethodCallObj)
       request.open('POST', this.apiUrl, true)
