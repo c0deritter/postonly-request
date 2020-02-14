@@ -11,7 +11,7 @@ export default class PostOnlyHttpClient {
     this.apiUrl = apiUrl
   }
 
-  async request(id: string, data?: object): Promise<Message> {
+  async request(message: Message|any): Promise<any> {
     let request = new XMLHttpRequest()
 
     return new Promise<Message>((resolve, reject) => {
@@ -24,24 +24,15 @@ export default class PostOnlyHttpClient {
 
         if (request.status == 200 && request.status < 300) {
           let json = request.response
-          let obj: Message
 
           try {
-            obj = JSON.parse(json)
+            var obj = JSON.parse(json)
           }
           catch (e) {
-            reject('Could not parse JSON: ' + json)
+            reject(e)
           }
 
-          if (message == undefined) {
-            throw new Error('Invalid message. Message was undefined.')
-          }
-
-          if (typeof message.id !== 'string') {
-            throw new Error('Invalid message. Message id is not of type \`string\'.')
-          }
-        
-          resolve(message)
+          resolve(obj)
         }
         else {
           reject({
@@ -49,11 +40,6 @@ export default class PostOnlyHttpClient {
             statusText: request.statusText
           })
         }
-      }
-
-      let message: Message = {
-        id: id,
-        data: data
       }
 
       let json = JSON.stringify(message)
