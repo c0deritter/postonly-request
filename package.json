@@ -1,6 +1,6 @@
 {
   "name": "coderitter-api-postonly-browser-http-client",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "The Coderitter Api POSTonly HTTP client for browsers",
   "main": "lib/PostOnlyHttpClient.js",
   "types": "lib/PostOnlyHttpClient.d.ts",
@@ -9,11 +9,11 @@
   ],
   "dependencies": {
     "coderitter-api-remote-method-call": "^2.1.1",
-    "mega-nice-json": "^4.0.0"
+    "mega-nice-json": "^4.0.1"
   },
   "devDependencies": {
     "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.2"
   },
   "scripts": {
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
