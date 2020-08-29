@@ -32,7 +32,7 @@ export default class PostOnlyHttpClient {
             reject(e)
           }
 
-          let result: T = fromJsonObj(resultObj, this.instantiator)
+          let result: T = fromJsonObj(resultObj, { instantiator: this.instantiator })
           resolve(result)
         }
         else {
