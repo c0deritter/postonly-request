@@ -1,20 +1,20 @@
 import { RemoteMethodCall, Result } from 'coderitter-api-remote-method-call'
-import { fromJsonObj, Instantiator, toJsonObj } from 'mega-nice-json'
+import { fromJsonObj, toJsonObj } from 'mega-nice-json'
 
 export default class PostOnlyHttpClient {
 
   apiUrl: string
-  instantiator: Instantiator
+  instantiator: {[ className: string]: () => any }
 
-  constructor(apiUrl: string, instantiator: Instantiator) {
+  constructor(apiUrl: string, instantiator: {[ className: string]: () => any }) {
     this.apiUrl = apiUrl
     this.instantiator = instantiator
   }
 
-  async request<T>(remoteMethodCall: RemoteMethodCall|any): Promise<Result<T>> {
+  async request<T extends Result>(remoteMethodCall: RemoteMethodCall|any): Promise<T> {
     let request = new XMLHttpRequest()
 
-    return new Promise<Result<T>>((resolve, reject) => {
+    return new Promise<T>((resolve, reject) => {
       // onreadystatechange yields higher browser support and is the same as onload
       // with readyState == 4
       request.onreadystatechange = () => {
@@ -32,7 +32,7 @@ export default class PostOnlyHttpClient {
             reject(e)
           }
 
-          let result = fromJsonObj(resultObj, this.instantiator)
+          let result: T = fromJsonObj(resultObj, this.instantiator)
           resolve(result)
         }
         else {
