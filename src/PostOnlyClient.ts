@@ -1,7 +1,7 @@
 import { RemoteMethodCall, Result } from 'coderitter-api-remote-method-call'
 import { fromJsonObj, toJsonObj } from 'mega-nice-json'
 
-export default class PostOnlyHttpClient {
+export class PostOnlyClient {
 
   apiUrl: string
   instantiator: {[ className: string]: () => any }
