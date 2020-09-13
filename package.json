@@ -1,31 +1,31 @@
 {
-  "name": "postonly-browser-http-client",
+  "name": "postonly-browser-client",
   "version": "2.0.0",
   "description": "A POSTonly HTTP client for the browser",
-  "main": "lib/PostOnlyHttpClient.js",
-  "types": "lib/PostOnlyHttpClient.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
   "dependencies": {},
   "devDependencies": {
-    "ts-node": "^8.4.1",
-    "typescript": "^3.7.2"
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register \"test/**/*.spec.ts\"",
+    "test": "mocha -r ts-node/register \"test/**/*.test.ts\"",
     "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/c0deritter/postonly-browser-http-client.git"
+    "url": "git+https://github.com/c0deritter/postonly-browser-client.git"
   },
   "keywords": [
     ""
   ],
   "author": "Coderitter GmbH",
   "bugs": {
-    "url": "https://github.com/c0deritter/postonly-browser-http-client/issues"
+    "url": "https://github.com/c0deritter/postonly-browser-client/issues"
   },
-  "homepage": "https://github.com/c0deritter/postonly-browser-http-client#readme"
+  "homepage": "https://github.com/c0deritter/postonly-browser-client#readme"
 }

@@ -1,9 +1,6 @@
-export interface Message {
-  id: string
-  data: any
-}
+import { Message } from './Message'
 
-export default class PostOnlyHttpClient {
+export class PostOnlyClient {
 
   apiUrl: string
 
@@ -11,7 +8,7 @@ export default class PostOnlyHttpClient {
     this.apiUrl = apiUrl
   }
 
-  async request(message: Message|any): Promise<any> {
+  async request(message: Message): Promise<any> {
     let request = new XMLHttpRequest()
 
     return new Promise<Message>((resolve, reject) => {
