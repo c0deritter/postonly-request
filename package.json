@@ -1,16 +1,12 @@
 {
-  "name": "coderitter-api-postonly-browser-client",
-  "version": "4.0.3",
-  "description": "The Coderitter Api POSTonly HTTP client for browsers",
-  "main": "lib/PostOnlyHttpClient.js",
-  "types": "lib/PostOnlyHttpClient.d.ts",
+  "name": "coderitter-api-postonly-request",
+  "version": "1.0.0",
+  "description": "An adoption of the POSTonly HTTP client for the Coderitter API",
+  "main": "lib/request.js",
+  "types": "lib/request.d.ts",
   "files": [
     "lib/**/*"
   ],
-  "dependencies": {
-    "coderitter-api-remote-method-call": "^3.0.2",
-    "mega-nice-json": "^6.0.0"
-  },
   "devDependencies": {
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
@@ -21,14 +17,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/c0deritter/postonly-browser-client/tree/coderitter-api"
+    "url": "git+https://github.com/c0deritter/postonly-request.git/tree/coderitter-api"
   },
   "keywords": [
     ""
   ],
   "author": "Coderitter GmbH",
   "bugs": {
-    "url": "https://github.com/c0deritter/postonly-browser-client/issues"
+    "url": "https://github.com/c0deritter/postonly-request/issues"
   },
-  "homepage": "https://github.com/c0deritter/postonly-browser-client#readme"
+  "homepage": "https://github.com/c0deritter/postonly-request/tree/coderitter-api#readme",
+  "dependencies": {
+    "coderitter-api-remote-method-call": "^3.0.3",
+    "knight-json": "^1.0.0"
+  }
 }
