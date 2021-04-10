@@ -1,6 +1,6 @@
 {
   "name": "coderitter-api-postonly-request",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An adoption of the POSTonly HTTP client for the Coderitter API",
   "main": "lib/request.js",
   "types": "lib/request.d.ts",

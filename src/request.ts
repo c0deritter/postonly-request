@@ -1,7 +1,7 @@
-import { Result } from 'coderitter-api-remote-method-call'
+import { RemoteMethodCall, Result } from 'coderitter-api-remote-method-call'
 import { fromJsonObj, toJsonObj } from 'knight-json'
 
-export async function request<T extends Result>(url: string, remoteMethodCall: any, instantiator: {[ className: string]: () => any }): Promise<any> {
+export async function request<T extends Result>(url: string, remoteMethodCall: RemoteMethodCall, instantiator: {[ className: string]: () => any }): Promise<T> {
   let request = new XMLHttpRequest()
 
   return new Promise<T>((resolve, reject) => {
